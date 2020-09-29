@@ -4,9 +4,10 @@
  * Module dependencies.
  */
 
-var app = require('../app');
-var debug = require('debug')('project8:server');
-var http = require('http');
+ var app = require('../app');
+ var debug = require('debug')('sequelize-with-express:server');
+ var http = require('http');
+ var sequelize = require('../models').sequelize; // import Sequelize
 
 /**
  * Get port from environment and store in Express.
