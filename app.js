@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const { sequelize, Book } = require('./models');
 
 var routes = require('./routes/index');
 var books = require('./routes/books');
@@ -10,7 +11,6 @@ var books = require('./routes/books');
 var app = express();
 
 
-const { sequelize, Book } = require('./models');
 
 (async () => {
   console.log('Testing the connection to the database...');
@@ -22,6 +22,12 @@ const { sequelize, Book } = require('./models');
   }
 })();
 
+//Redirects home to /Books
+app.get('/', (req, res) => {
+  res.redirect('/books');
+});
+
+//Shows all books
 app.get('/', async (req, res) => {
   const books = await Book.findAll();
   res.json(books);

@@ -3,7 +3,7 @@ const Sequelize = require('sequelize');
 const moment = require('moment');
 
 module.exports = (sequelize) => {
-  class Book extends Sequelize.Model {
+  class Book extends Sequelize.Model {}
   Book.init({
     title: {
       type: Sequelize.STRING,
@@ -34,10 +34,10 @@ module.exports = (sequelize) => {
       allowNull: false, // disallow null
       validate: {
         notNull: {
-          msg: 'Please provide a value for "Author"',
+          msg: 'Please provide a value for "Genre"',
         },
         notEmpty: {
-          msg: 'Please provide a value for "Author"',
+          msg: 'Please provide a value for "Genre"',
         }
       },
     },
