@@ -1,8 +1,11 @@
 extends layout
 
+//- Added validator for new book
+
 block content
   h1 New Book
-  form(action="/books/new", method="post" )
+  form(action="/books/new", method="post", onsubmit="return confirm('Do you really want to add this book?') ")
+    p
     include form
     input(type="submit" value="Create New Book")
     p

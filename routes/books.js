@@ -2,8 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Book = require('../models').Book;
 
-
-
 /* Handler function to wrap each route. */
 function asyncHandler(cb){
   return async(req, res, next) => {
@@ -79,10 +77,8 @@ router.post('/:id', asyncHandler(async (req, res, next) => {
   }
 }));
 
-
 /* Delete individual book. */
 router.post('/:id/delete', asyncHandler(async (req ,res, next) => {
-
   const book = await Book.findByPk(req.params.id);
   if(book) {
     await book.destroy(req.body);

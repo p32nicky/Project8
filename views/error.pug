@@ -6,3 +6,5 @@ block content
   p Please Try Again
   br
   a.button(href='/books') Home
+  h3= error.status
+    pre #{error.stack}
