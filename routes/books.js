@@ -59,7 +59,8 @@ router.post('/:id', asyncHandler(async (req, res, next) => {
     const book = await Book.findByPk(req.params.id);
     if(book) {
       await book.update(req.body);
-      res.redirect("/books/" + book.id);
+      //res.redirect("/books/" + book.id);
+      return res.redirect("/");
     } else {
       const error = new Error('Record Not Found');
       error.stats = 404;
@@ -83,7 +84,7 @@ router.post('/:id/delete', asyncHandler(async (req ,res, next) => {
   const book = await Book.findByPk(req.params.id);
   if(book) {
     await book.destroy(req.body);
-    res.redirect("/books");
+    res.redirect("/books/");
   } else {
     const error = new Error('500 Error');
     error.stats = 500;
