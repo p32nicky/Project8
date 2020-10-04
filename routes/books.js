@@ -19,7 +19,7 @@ router.get('/', asyncHandler(async (req, res) => {
       res.render("index", { books, title: "Books" });
   }));
 
-/* Render a new book form. */
+/* Render new book form. */
 router.get('/new', asyncHandler(async (req, res) => {
   res.render("new-book", { book: {}, title: "New Book" });
 }));
@@ -41,28 +41,27 @@ router.post('/new', asyncHandler(async (req, res) => {
   }
 }));
 
-/* Get Book Detail Pages. */
-router.get("/:id", asyncHandler(async(req, res, next) => {
+/* GET Book Edit Page. */
+router.get(":id", asyncHandler(async(req, res, next) => {
   const book = await Book.findByPk(req.params.id);
   if(book) {
     res.render("update-book", { book, title: book.title });
   } else {
-    const error = new Error('500 Error');
+    const error = new Error('Record Not Found');
     error.stats = 500;
     next(error)
   }
 }));
 
-/* POST book update. */
+/* POST book Update. */
 router.post('/:id', asyncHandler(async (req, res, next) => {
   try{
     const book = await Book.findByPk(req.params.id);
-
     if(book) {
       await book.update(req.body);
       res.redirect("/books/" + book.id);
     } else {
-      const error = new Error('404 Error');
+      const error = new Error('Record Not Found');
       error.stats = 404;
       next(error)
     }

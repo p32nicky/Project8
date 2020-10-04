@@ -1,8 +1,8 @@
 extends layout
 
 block content
-  h1= New Book
-  form(action="/books", method="post")
+  h1 New Book
+  form(action="/books/new", method="post")
     include form
     input(type="submit" value="Create New Book")
     p

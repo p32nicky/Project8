@@ -1,8 +1,9 @@
 extends layout
 
 block content
+h1 Update Book
+
   include form
-  h1 Update Book
 
   include errors
   form(method='post'  action="/books/" + book.id )
