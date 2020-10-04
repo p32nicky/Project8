@@ -2,6 +2,8 @@
 const Sequelize = require('sequelize');
 const moment = require('moment');
 
+//Items have assigned requirements
+
 module.exports = (sequelize) => {
   class Book extends Sequelize.Model {}
   Book.init({
