@@ -42,7 +42,7 @@ router.post('/new', asyncHandler(async (req, res) => {
 }));
 
 /* GET Book Edit Page. */
-router.get("/:id", asyncHandler(async(req, res, next) => {
+router.get("/books/:id", asyncHandler(async(req, res, next) => {
   const book = await Book.findByPk(req.params.id);
   if(book) {
     res.render("update-book", { book, title: book.title });
